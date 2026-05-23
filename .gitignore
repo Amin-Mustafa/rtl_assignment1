@@ -1,0 +1,88 @@
+# Verilog Simulation and Build Artifacts
+*.vcd
+*.vvp
+*.out
+*.o
+*.a
+
+# Build directories
+build/
+sim/
+work/
+obj/
+results/
+output/
+
+# Simulation logs and reports
+*.log
+*.rpt
+*.txt
+*.v.bak
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Vivado/ISE artifacts
+*.xpr
+*.xise
+*.v_c
+.Xil/
+.Xilinx/
+vivado*.log
+vivado*.jou
+fsm_encoding.os
+risc*.hwh
+
+# Quartus artifacts
+*.qpf
+*.qsf
+*.qws
+*.rpt
+*.summary
+db/
+incremental_db/
+simulation/
+output_files/
+
+# ModelSim/Questasim artifacts
+*.wlf
+*.psm
+work/
+transcript
+vsim.ini
+*.mpf
+
+# Synopsys artifacts
+*.mr
+*.pvl
+*.sdb
+*.shm
+xcelium.d/
+
+# General temporary files
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ctags
+tags
+.tags
+cscope.out
+
+# OS-specific
+Thumbs.db
+.DS_Store
+ehthumbs.db
