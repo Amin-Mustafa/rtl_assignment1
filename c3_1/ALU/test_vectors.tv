@@ -1,0 +1,40 @@
+// Test vectors for ALU
+// Format: {Ain[3:0], Bin[3:0], op[2:0], ALUOut_expected[3:0]}
+// Each line is 15 bits
+
+// Operation 000: Pass Ain
+0101_0011_000_0101
+1111_0000_000_1111
+0001_1110_000_0001
+
+// Operation 001: Ain | Bin (OR)
+0101_1010_001_1111
+1100_0011_001_1111
+0000_0000_001_0000
+
+// Operation 010: Ain ^ Bin (XOR)
+1100_1010_010_0110
+1111_1111_010_0000
+0101_0011_010_0110
+
+// Operation 011: Ain & Bin (AND)
+1101_1011_011_1001
+1111_0000_011_0000
+0101_0011_011_0001
+
+// Operation 100: Ain - Bin (Subtraction)
+0110_0011_100_0011
+1010_0101_100_0101
+0001_0001_100_0000
+
+// Operation 101: Ain + Bin (Addition)
+0011_0101_101_1000
+0101_0101_101_1010
+1111_0001_101_0000  // Overflow test
+
+// Operation 110 & 111: Default (Pass Bin)
+0101_1010_110_1010
+1111_0000_111_0000
+
+// End of test vectors - mark with x
+111111111111111
