@@ -1,0 +1,16 @@
+// Format: d[3:0]_rst_en_ldsh_SI_SOexp_qexp[3:0] (13 bits)
+
+// 1. Reset
+0000_0_0_0_0_0_0000
+
+// 2. Parallel Load: 0xA (1010). SO becomes 0 immediately.
+1010_1_1_1_0_0_1010
+
+// 3. Shift Right: SI=1. (1010 >> 1) with 1 at MSB = 1101. SO becomes 1.
+0000_1_1_0_1_1_1101
+
+// 4. Shift Right: SI=0. (1101 >> 1) with 0 at MSB = 0110. SO becomes 0.
+0000_1_1_0_0_0_0110
+
+// 5. Hold: en=0. Values should remain exactly the same.
+1111_1_0_1_1_0_0110

@@ -1,0 +1,16 @@
+// Format: d[7:0]_rst_en_ldsh_SI_SOexp_qexp[7:0] (21 bits)
+
+// 1. Reset
+00000000_0_0_0_0_0_00000000
+
+// 2. Parallel Load: 0x81 (10000001). SO becomes 1 immediately via assign.
+10000001_1_1_1_0_1_10000001
+
+// 3. Shift Left: SI=1. (10000001 << 1) + 1 = 00000011. SO becomes 0.
+00000000_1_1_0_1_0_00000011
+
+// 4. Shift Left: SI=0. (00000011 << 1) + 0 = 00000110. SO stays 0.
+00000000_1_1_0_0_0_00000110
+
+// 5. Hold: en=0. Values should remain exactly the same.
+11111111_1_0_1_1_0_00000110

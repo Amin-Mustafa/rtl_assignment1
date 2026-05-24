@@ -1,0 +1,24 @@
+// Format: d[7:0]_rst_pst_en_q_expected[7:0]
+// Total: 19 bits per line
+// Note: rst is ACTIVE LOW (0), pst is ACTIVE HIGH (1)
+
+// 1. Asynchronous Reset: rst=0. Output should be 0.
+00000000_0_0_0_00000000
+
+// 2. Asynchronous Preset: rstx=1, pst=1. Output should be FF (255).
+00000000_1_1_0_11111111
+
+// 3. Priority Check: rst=0 and pst=1 simultaneously. rst should win (0).
+11111111_0_1_1_00000000
+
+// 4. Synchronous Load: en=1. Load 0xAA (10101010).
+10101010_1_0_1_10101010
+
+// 5. Synchronous Hold: en=0. Ignore new d (0xBB), hold 0xAA.
+10111011_1_0_0_10101010
+
+// 6. Synchronous Load: en=1. Load 0x55 (01010101).
+01010101_1_0_1_01010101
+
+// 7. Preset overrides Load: pst=1, en=1. Preset wins (FF).
+00000000_1_1_1_11111111
