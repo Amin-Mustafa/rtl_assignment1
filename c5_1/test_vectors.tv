@@ -1,0 +1,20 @@
+// FORMAT (Hex): Ddata(8) _ Daddr(1) _ Aaddr(1) _ Baddr(1) _ we(1) _ Adata_exp(8) _ Bdata_exp(8)
+// we(1) serves as our write enable (1 = write, 0 = read only).
+
+// 1. Write 0xA5A5A5A5 to Reg 0. Read A=Reg 0, B=Reg 0.
+A5A5A5A5_0_0_0_1_A5A5A5A5_A5A5A5A5
+
+// 2. Write 0x12345678 to Reg 1. Read A=Reg 1, B=Reg 0 (Should still hold previous).
+12345678_1_1_0_1_12345678_A5A5A5A5
+
+// 3. Write 0xFFFFFFFF to Reg 15. Read A=Reg 15, B=Reg 1.
+FFFFFFFF_F_F_1_1_FFFFFFFF_12345678
+
+// 4. Read Only Test (we=0). Read A=Reg 15, B=Reg 0.
+00000000_0_F_0_0_FFFFFFFF_A5A5A5A5
+
+// 5. Overwrite Test. Write 0x00000000 to Reg 15. Read A=Reg 15, B=Reg 15.
+00000000_F_F_F_1_00000000_00000000
+
+// 6. Write 0xDEADBEEF to Reg 5. Read A=Reg 5, B=Reg 1.
+DEADBEEF_5_5_1_1_DEADBEEF_12345678
