@@ -1,0 +1,30 @@
+// Format: {din[15:0], dsel[1:0], seg[1:7], dout[7:0]}
+// Each line evaluates the integrated DPU module logic
+
+// Test 1: ALUop=000 (Pass Ain), Ain=5, Bin=10
+// Tests all Debug Interface multiplexer paths
+0000_0000_1010_0101_00_1101101_00000101 // dsel=00 (Pass Ain, dout=5)
+0000_0000_1010_0101_01_1101101_00001010 // dsel=01 (Pass Bin, dout=10)
+0000_0000_1010_0101_10_1101101_00000101 // dsel=10 (Pass ALUout, dout=5)
+0000_0000_1010_0101_11_1101101_00000000 // dsel=11 (Pass ALUop, dout=0)
+
+// Test 2: ALUop=001 (OR), Ain=12, Bin=3
+0000_0001_0011_1100_10_1110001_00001111 // dsel=10, 12 | 3 = 15(F)
+
+// Test 3: ALUop=010 (XOR), Ain=9, Bin=6
+0000_0010_0110_1001_10_1110001_00001111 // dsel=10, 9 ^ 6 = 15(F)
+
+// Test 4: ALUop=011 (AND), Ain=11, Bin=14
+0000_0011_1110_1011_10_1110111_00001010 // dsel=10, 11 & 14 = 10(A)
+
+// Test 5: ALUop=100 (SUB), Ain=7, Bin=4
+0000_0100_0100_0111_10_1001111_00000011 // dsel=10, 7 - 4 = 3
+
+// Test 6: ALUop=101 (ADD), Ain=7, Bin=2
+0000_0101_0010_0111_10_1101111_00001001 // dsel=10, 7 + 2 = 9
+
+// Test 7: ALUop=110 (Pass Bin), Ain=1, Bin=8
+0000_0110_1000_0001_10_1111111_00001000 // dsel=10, pass 8
+
+// Test 8: Verify dsel=11 (Pass ALUop) on ALUop=101
+0000_0101_0010_0111_11_1101111_00000101 // dsel=11, ALUop=5, ALUout=9

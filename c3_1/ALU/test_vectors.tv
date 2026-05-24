@@ -35,6 +35,3 @@
 // Operation 110 & 111: Default (Pass Bin)
 0101_1010_110_1010
 1111_0000_111_0000
-
-// End of test vectors - mark with x
-111111111111111
