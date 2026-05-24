@@ -30,6 +30,3 @@
 
 // 10. Assert reset while loading to ensure reset has priority
 11111111_0_1_0_00000000
-
-// End
-xxxxxxxx_x_x_x_xxxxxxxx
