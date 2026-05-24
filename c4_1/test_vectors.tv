@@ -1,0 +1,27 @@
+// Format: rst_sel[1:0]_in1[2:0]_in2[2:0]_out_expected[0:6]
+// Total: 16 bits per line
+
+// 0. Initial Reset
+1_00_000_000_0000000
+
+// 1. sel=0 (Pass in2): in2=5(101). Expected: 5 (0000101)
+0_00_010_101_0000101
+
+// 2. sel=1 (ADD) Normal: 7+2=9. Expected: 9 (0001001)
+0_01_111_010_0001001
+
+// 3. sel=2 (Pass in1): in1=4(100). Expected: 4 (0000100)
+0_10_100_001_0000100
+
+// 4. MAXIMUM ADD: in1=7(111), in2=7(111). Expected: 14 (0001110)
+0_01_111_111_0001110
+
+// 5. ZERO ADD: in1=0(000), in2=0(000). Expected: 0 (0000000)
+0_01_000_000_0000000
+
+// 6. Mid-Flight Reset: rst=1 while trying to ADD. Expected: 0
+1_01_011_011_0000000
+
+// 7. sel=3 (Default/Invalid state) -> 'a' gets xxxx. 
+// 'b' adds three 0s, resulting in 000xxxx.
+0_11_000_000_000xxxx
